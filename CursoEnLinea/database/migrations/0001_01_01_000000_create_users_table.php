@@ -20,14 +20,14 @@ return new class extends Migration
 
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('role_id');
-            $table->foreign('role_id')->references('id')->on('roles');
+            $table->unsignedInteger('role_id')->nullable();
+            $table->foreign('role_id')->references('id')->on('roles')->nullable();
             $table->string('name');
             $table->string('last_name')->nullable();
-            $table->string('slug');
+            $table->string('slug')->nullable();
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('picture');
+            $table->string('picture')->nullable();
             //stripe fields
             $table->string('stripe_id')->nullable();
             $table->string('card_brand')->nullable();
@@ -80,7 +80,7 @@ return new class extends Migration
      * Reverse the migrations.
      */
     public function down(): void
-    {
+    {-
         Schema::dropIfExists('users');
         Schema::dropIfExists('roles');
         Schema::dropIfExists('subscriptions');
