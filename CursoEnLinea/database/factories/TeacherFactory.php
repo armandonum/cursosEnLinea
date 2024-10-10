@@ -18,6 +18,10 @@ class TeacherFactory extends Factory
     {
         return [
             //
+            'user_id' => null,
+            'title' => $this->faker->jobTitle,
+            'biography' => $this->faker->paragraph(),
+            'website' => $this->faker->url,
         ];
     }
 }

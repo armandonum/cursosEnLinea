@@ -17,7 +17,9 @@ class CategoriesFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => $this->faker->randomElement(['PHP', 'JAVASCRIPT', 'CSS', 'HTML', 'REACT', 'VUE', 'ANGULAR']),
+            'description' =>faker->sentence(),
+            
         ];
     }
 }

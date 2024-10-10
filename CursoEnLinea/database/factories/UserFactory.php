@@ -26,16 +26,18 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
+        $name=$faker->name();
+        $last_Name=$faker->lastName();
         return [
-            'name' => fake()->name(),
-            'email' => fake()->unique()->safeEmail(),
-            'email_verified_at' => now(),
-            'password' => static::$password ??= Hash::make('password'),
-            'two_factor_secret' => null,
-            'two_factor_recovery_codes' => null,
+            'role_id' => \App\Models\Role::all()->random()->id,
+            'name' => $name,
+            'last_name' => $last_Name,
+            'slug' => \Str::slug($name . ' ' . $last_Name, '-'),
+            'email' => $faker->unique()->safeEmail(),
+            'password' => '$2y$10$1qJ',
+           
             'remember_token' => Str::random(10),
-            'profile_photo_path' => null,
-            'current_team_id' => null,
+            'picture' => \Faker\Provider\Image::image(storage_path() , '/app/public/users', 200, 200, 'people', false),
         ];
     }
 

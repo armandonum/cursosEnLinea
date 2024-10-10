@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Role>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Requirements>
  */
-class RoleFactory extends Factory
+class RequirementsFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,9 +17,8 @@ class RoleFactory extends Factory
     public function definition(): array
     {
         return [
-            //
-            'name' => $this->faker->word,
-            'description' => $this->faker->sentence(),
+            'course_id' => \App\Models\Courses::all()->random()->id,
+            'requirement' => $this->faker->sentence(),
         ];
     }
 }

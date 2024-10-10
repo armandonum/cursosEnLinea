@@ -18,6 +18,8 @@ class StudentFactory extends Factory
     {
         return [
             //
+            'user_id' => null,
+            'title' => $this->faker->jobTitle,
         ];
     }
 }
